@@ -32,14 +32,7 @@ public class WcCmd {
 			}
 		}
 		
-		// ファイル数確認
-		if(fileList.size() >= 2) {
-			System.err.println("指定できるファイルは1つです。");
-			return;
-		}else if (fileList.size() == 0) {
-			System.err.println("ファイルを指定してください。");
-			return;
-		}
+
 
 		// optionのチェック 
 		boolean countBytes = false;
@@ -98,6 +91,16 @@ public class WcCmd {
 			int lineCount = 0;
 			int wordCount = 0;
 
+			
+			// ファイル数確認
+			if(fileList.size() >= 2) {
+				System.err.println("指定できるファイルは1つです。");
+				return;
+			}else if (fileList.size() == 0) {
+				System.err.println("ファイルを指定してください。");
+				return;
+			}
+			
 			// ファイルの有無をチェック
 			File file = new File(fileList.get(0));
 			if (!file.isFile() || !file.exists()) {
