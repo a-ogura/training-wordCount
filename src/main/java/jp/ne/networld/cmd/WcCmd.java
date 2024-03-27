@@ -31,6 +31,11 @@ public class WcCmd {
 				fileList.add(arg);
 			}
 		}
+		
+		// ファイル数確認
+		if(fileList.size() <= 2) {
+			System.err.println("指定できるファイルは1つです。");
+		}
 
 		// optionのチェック 
 		boolean countBytes = false;
@@ -76,7 +81,6 @@ public class WcCmd {
 				System.out.println("WC Version 1.0");
 				return;
 			default:
-
 				System.err.println(String.format("wc: 無効なオプション %s: ", option));
 				System.err.println("詳しくは 'wc --help' を実行して下さい。");
 				return;
@@ -104,7 +108,6 @@ public class WcCmd {
 			while ((line = br.readLine()) != null) {
 				byteCount += line.getBytes(StandardCharsets.UTF_8).length;
 				charCount += line.length();
-				System.out.println(String.format("String : %s ,charCount is : %s", line.toString(), charCount));
 				lineCount++;
 				String[] words = line.split("\\s+");
 				wordCount += words.length;
